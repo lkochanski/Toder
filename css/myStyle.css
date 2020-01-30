@@ -1,0 +1,123 @@
+:root {
+  --color-yellow: #F5B700;
+  --color-lightBlue: #009FFD;
+  --color-darkBlue: #2A2A72;
+  --color-gray: #232528;
+  --color-white: #EAF6FF;
+
+
+}
+
+html {
+  background-image: linear-gradient( 89.4deg,  rgba(74,77,103,1) -4.3%, rgba(119,125,165,1) 102.1% );
+}
+
+body {
+  height: 100vh;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  }
+
+.shadow {
+  -webkit-box-shadow: 0px 10px 25px 5px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 10px 25px 5px rgba(0,0,0,0.6);
+  box-shadow: 0px 10px 25px 5px rgba(0,0,0,0.6);
+}
+
+.panel {
+  width: 40vh;
+  height: 50vh;
+  background-color: var(--color-white);
+  font-size: 30px;
+  margin: 30px;
+  border-radius: 20px;
+
+  }
+
+.panel-titleBar {
+  background-color: var(--color-yellow);
+  color: var(--color-gray);
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.panel-titleBar h4 {
+  padding: 10px;
+  margin: 0;
+  font-size: 25px;
+}
+
+.panel-content {
+
+}
+
+.panel-content-item {
+  color: var(--color-darkBlue);
+  padding: 0;
+  display: flex;
+  border: 1px solid var(--color-darkBlue);
+  margin: 10px;
+  border-radius: 10px;
+
+}
+
+.panel-content-item-left {
+  width: 75%;
+  border-right: 1px solid var(--color-darkBlue);
+}
+
+.panel-content-item-left:hover {
+  background-color: var(--color-yellow);
+  color: var(--color-gray);
+  border-top-left-radius: 10px ;
+  border-bottom-left-radius: 10px ;
+}
+
+.panel-content-item-left h6 {
+  font-size: 18px;
+  margin: 0;
+  padding: 10px 0 0 10px;
+}
+
+.panel-content-item-left p {
+  font-size: 14px;
+  padding: 0 0 0 10px;
+  margin-top: 4px;
+}
+
+
+.panel-content-item-right {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.moveItem, .removeItem {
+  text-align: center;
+  font-size: 1rem;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moveItem:hover {
+  cursor: pointer;
+  color: var(--color-yellow);
+  border-top-right-radius: 10px;
+}
+
+.removeItem:hover {
+  cursor: pointer;
+  color: var(--color-yellow);
+  border-bottom-right-radius: 10px;
+}
+
