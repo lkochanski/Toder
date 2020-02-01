@@ -1,0 +1,4 @@
+class Toder {
+  constructor() {
+  }
+}
