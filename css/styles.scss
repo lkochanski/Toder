@@ -3,6 +3,17 @@ $secondary: #38ef7d;
 $white: #fff;
 $gray: #9b9b9b;
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: $gray;
+}
+::-webkit-scrollbar-thumb {
+  background: $primary;
+}
+
+
 * {
   color: $secondary;
 }
@@ -12,11 +23,12 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .container {
-  min-width: 80%;
-  width: 80%;
+  min-width: 100%;
+  width: 100%;
   min-height: 100%;
   height: 100%;
   display: flex;
@@ -46,11 +58,13 @@ nav {
 }
 
 section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: auto;
-  margin-top: 20px;
+  position: static;
+  display: inline-grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 100%;
+  //flex-direction: row;
+  //align-items: center;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 
@@ -58,18 +72,19 @@ section {
   position: relative;
   background: linear-gradient(to top, $primary, $secondary);
   padding: 3px;
-  margin: 10px;
+  //margin: 10px;
+  width: 100%;
 }
 
 .panel {
   background: #222;
   color: white;
-  width: 20vw;
+  //width: 20vw;
   min-width: 400px;
-  height: 40vh;
-  max-height: 40vh;
-
-}
+  min-height: 60vh;
+  max-height: 60vh;
+  overflow: auto;
+  }
 
 .panel-bar {
   width: 100%;
@@ -112,7 +127,7 @@ h2 {
 }
 
 .panel-content-item-left h3 {
-  font-size: 20px;
+  font-size: 15px;
   padding-top: 5px;
   margin: 0;
   color: white;
@@ -120,7 +135,7 @@ h2 {
 
 
 .panel-content-item-left p {
-  font-size: 13px;
+  font-size: 11px;
   color: white;
   margin: 5px 0 5px 0;
 }
@@ -156,8 +171,6 @@ section {
   }
 }
 
-
-
 .btn-medium {
 width: 200px;
   height: 50px;
@@ -174,5 +187,6 @@ width: 200px;
   transition-duration: 0.4s;
   border: 1px solid $secondary;
 }
+
 
 

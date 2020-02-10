@@ -43,7 +43,7 @@ class Toder {
     }
 
     else {
-      alert('Pusto');
+      alert('Type task name');
     }
   }
 
