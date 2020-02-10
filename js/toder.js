@@ -29,8 +29,8 @@ class Toder {
 
   }
 
-  addTask(){
-    if(this.taskNameInput.value && this.taskDescInput.value) {
+  addTask(e){
+    if(this.taskNameInput.value) {
       this.taskName = this.taskNameInput.value;
       this.taskDesc = this.taskDescInput.value;
 
