@@ -55,6 +55,7 @@ nav {
 
 .nav-right {
   width: 25%;
+  padding-left: 50px;
 }
 
 section {
@@ -188,5 +189,43 @@ width: 200px;
   border: 1px solid $secondary;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 250px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  //background-color: $gray;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background-color: #222222;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid $secondary;
+  width: 25%;
+}
+
+.close {
+  color: $white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+
+}
+
+.close:hover,
+.close:focus {
+  color: $secondary;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
 
 

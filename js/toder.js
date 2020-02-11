@@ -8,9 +8,13 @@ class Toder {
     this.toDoPanel = document.querySelector('#toDoPanel');
     this.inProgressPanel = document.querySelector('#inProgressPanel');
     this.donePanel = document.querySelector('#donePanel');
-    this.addBtn = document.querySelector('#addTaskBtn').addEventListener('click', this.addTask.bind(this));
+
     this.removeBtns = document.getElementsByClassName('removeBtn');
     this.moveTaskBtns = document.getElementsByClassName('moveBtn');
+    this.searchInput = document.getElementById('search');
+
+    this.addBtn = document.querySelector('#addTaskBtn').addEventListener('click', this.addTask.bind(this));
+    this.searchInput.addEventListener('input', this.search);
 
     this.taskName = "";
     this.taskDesc = "";
@@ -20,7 +24,7 @@ class Toder {
 
   createListeners(){
     Array.from(this.removeBtns).forEach(btn => {
-      btn.addEventListener('click', this.removeTask);
+      btn.addEventListener('click', this.openModal);
     });
 
     Array.from(this.moveTaskBtns).forEach(btn => {
@@ -29,7 +33,7 @@ class Toder {
 
   }
 
-  addTask(e){
+  addTask(){
     if(this.taskNameInput.value) {
       this.taskName = this.taskNameInput.value;
       this.taskDesc = this.taskDescInput.value;
@@ -54,6 +58,7 @@ class Toder {
    let panelContentItemLeft = document.createElement('div');
    panelContentItemLeft.classList.add('panel-content-item-left');
    let panelH3 = document.createElement('h3');
+   panelH3.classList.add('panelH3');
    panelH3.innerHTML = this.taskName;
    let panelP = document.createElement('p');
    panelP.innerHTML = this.taskDesc;
@@ -82,6 +87,11 @@ class Toder {
   //           </div>`;
   // }
 
+  openModal(){
+    document.getElementById('confirmModal').style.display = "block";
+    document.getElementById('btnConfirm').addEventListener('click', this.removeTask);
+  }
+
   removeTask(){
     this.parentNode.parentNode.parentNode.remove();
     toDoApp.createListeners();
@@ -99,9 +109,17 @@ class Toder {
     }
 
     toDoApp.createListeners();
-
   }
 
+  search() {
+
+    }
+
+  // checkSearchInput(){
+  //   this.searchInput.value ===
+  // }
 }
 
 const toDoApp = new Toder();
+
+//toDo : search, tooltips, confirm delete, details, date?
