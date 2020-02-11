@@ -99,7 +99,6 @@ class Toder {
 
   moveTask(){
     const task = this.parentNode.parentNode.parentNode;
-    let self = this;
     if (this.parentNode.parentNode.parentNode.parentNode.getAttribute('id') === "toDoPanel") {
       task.remove();
       toDoApp.inProgressPanel.appendChild(task);
@@ -112,7 +111,18 @@ class Toder {
   }
 
   search() {
+    const term = toDoApp.searchInput.value.toLowerCase();
+    const tasks = document.getElementsByTagName('h3');
 
+    Array.from(tasks).forEach(function (task) {
+      const title = task.textContent;
+
+      if(title.toLowerCase().indexOf(term) != -1) {
+        task.parentNode.parentNode.style.display = 'flex';
+      } else {
+        task.parentNode.parentNode.style.display = 'none';
+      }
+    })
     }
 
   // checkSearchInput(){
