@@ -74,27 +74,17 @@ class Toder {
    return panelContentItem;
   }
 
-  // createListItemHTML() {
-  //   return `<div class="panel-content-item"> /
-  //             <div class="panel-content-item-left">
-  //               <h3>${this.taskName}</h3>
-  //               <p>${this.taskDesc}</p>
-  //             </div>
-  //             <div class="panel-content-item-right">
-  //               <span class="icon"><i class="fas fa-arrow-right"></i></span>
-  //               <span class="icon"><i class="far fa-trash-alt"></i></span>
-  //             </div>
-  //           </div>`;
-  // }
-
   openModal(){
-    document.getElementById('confirmModal').style.display = "block";
-    document.getElementById('btnConfirm').addEventListener('click', this.removeTask);
-  }
-
-  removeTask(){
-    this.parentNode.parentNode.parentNode.remove();
-    toDoApp.createListeners();
+    let taskToRemove =this.parentNode.parentNode.parentNode;
+    let confirmModal = document.getElementById('confirmModal');
+    confirmModal.style.display = "block";
+    document.getElementById('btnConfirm').addEventListener('click', function () {
+      taskToRemove.remove();
+      confirmModal.style.display = 'none';
+    });
+    document.getElementById('btnLeave').addEventListener('click', function () {
+      confirmModal.style.display = 'none';
+    })
   }
 
   moveTask(){
@@ -125,11 +115,8 @@ class Toder {
     })
     }
 
-  // checkSearchInput(){
-  //   this.searchInput.value ===
-  // }
 }
 
 const toDoApp = new Toder();
 
-//toDo : search, tooltips, confirm delete, details, date?
+//toDo : tooltips, confirm delete, details? , date?, drag&drop
