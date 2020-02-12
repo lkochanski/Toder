@@ -2,7 +2,8 @@ class Toder {
   constructor() {
     this.init();
   }
-  init(){
+
+  init() {
     this.taskNameInput = document.querySelector('#taskName');
     this.taskDescInput = document.querySelector('#taskDesc');
     this.toDoPanel = document.querySelector('#toDoPanel');
@@ -18,11 +19,12 @@ class Toder {
 
     this.taskName = "";
     this.taskDesc = "";
+    this.taskCounter = 1;
 
     this.createListeners();
   }
 
-  createListeners(){
+  createListeners() {
     Array.from(this.removeBtns).forEach(btn => {
       btn.addEventListener('click', this.openModal);
     });
@@ -33,8 +35,8 @@ class Toder {
 
   }
 
-  addTask(){
-    if(this.taskNameInput.value) {
+  addTask() {
+    if (this.taskNameInput.value) {
       this.taskName = this.taskNameInput.value;
       this.taskDesc = this.taskDescInput.value;
 
@@ -44,38 +46,41 @@ class Toder {
       this.toDoPanel.appendChild(this.createListItemJS());
 
       this.createListeners();
-    }
-
-    else {
+    } else {
       alert('Type task name');
     }
   }
 
-  createListItemJS(){
-   const panelContentItem =  document.createElement('div');
-   panelContentItem.classList.add(`panel-content-item`);
+  createListItemJS() {
+    const panelContentItem = document.createElement('div');
+    panelContentItem.classList.add(`panel-content-item`);
+    panelContentItem.id = `Task${this.taskCounter}`;
+    panelContentItem.setAttribute('draggable', 'true');
+    panelContentItem.setAttribute('ondragstart', 'onDragStart(event);');
 
-   let panelContentItemLeft = document.createElement('div');
-   panelContentItemLeft.classList.add('panel-content-item-left');
-   let panelH3 = document.createElement('h3');
-   panelH3.classList.add('panelH3');
-   panelH3.innerHTML = this.taskName;
-   let panelP = document.createElement('p');
-   panelP.innerHTML = this.taskDesc;
-   panelContentItemLeft.appendChild(panelH3);
-   panelContentItemLeft.appendChild(panelP);
-   panelContentItem.appendChild(panelContentItemLeft);
+    let panelContentItemLeft = document.createElement('div');
+    panelContentItemLeft.classList.add('panel-content-item-left');
+    let panelH3 = document.createElement('h3');
+    panelH3.classList.add('panelH3');
+    panelH3.innerHTML = this.taskName;
+    let panelP = document.createElement('p');
+    panelP.innerHTML = this.taskDesc;
+    panelContentItemLeft.appendChild(panelH3);
+    panelContentItemLeft.appendChild(panelP);
+    panelContentItem.appendChild(panelContentItemLeft);
 
-   let panelContentItemRight = document.createElement('div');
-   panelContentItemRight.classList.add("panel-content-item-right");
-   panelContentItemRight.innerHTML = "<span class=\"icon\"><i class=\"moveBtn fas fa-arrow-right\"></i></span><span class=\"icon\"><i class=\"removeBtn far fa-trash-alt\"></i></span>";
-   panelContentItem.appendChild(panelContentItemRight);
+    let panelContentItemRight = document.createElement('div');
+    panelContentItemRight.classList.add("panel-content-item-right");
+    panelContentItemRight.innerHTML = "<span class=\"icon\"><i class=\"moveBtn tooltip fas fa-arrow-right\"></i></span><span class=\"icon\"><i class=\"removeBtn far fa-trash-alt\"></i></span>";
+    panelContentItem.appendChild(panelContentItemRight);
 
-   return panelContentItem;
+    this.taskCounter++;
+
+    return panelContentItem;
   }
 
-  openModal(){
-    let taskToRemove =this.parentNode.parentNode.parentNode;
+  openModal() {
+    let taskToRemove = this.parentNode.parentNode.parentNode;
     let confirmModal = document.getElementById('confirmModal');
     confirmModal.style.display = "block";
     document.getElementById('btnConfirm').addEventListener('click', function () {
@@ -87,12 +92,12 @@ class Toder {
     })
   }
 
-  moveTask(){
+  moveTask() {
     const task = this.parentNode.parentNode.parentNode;
     if (this.parentNode.parentNode.parentNode.parentNode.getAttribute('id') === "toDoPanel") {
       task.remove();
       toDoApp.inProgressPanel.appendChild(task);
-    } else if(this.parentNode.parentNode.parentNode.parentNode.getAttribute('id') === "inProgressPanel") {
+    } else if (this.parentNode.parentNode.parentNode.parentNode.getAttribute('id') === "inProgressPanel") {
       task.remove();
       toDoApp.donePanel.appendChild(task);
     }
@@ -107,16 +112,16 @@ class Toder {
     Array.from(tasks).forEach(function (task) {
       const title = task.textContent;
 
-      if(title.toLowerCase().indexOf(term) != -1) {
+      if (title.toLowerCase().indexOf(term) != -1) {
         task.parentNode.parentNode.style.display = 'flex';
       } else {
         task.parentNode.parentNode.style.display = 'none';
       }
     })
-    }
+  }
 
 }
 
 const toDoApp = new Toder();
 
-//toDo : tooltips, confirm delete, details? , date?, drag&drop
+//toDo : tooltips, details? , date?, drag&drop
