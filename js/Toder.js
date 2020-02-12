@@ -124,4 +124,3 @@ class Toder {
 
 const toDoApp = new Toder();
 
-//toDo : tooltips, details? , date?, drag&drop
